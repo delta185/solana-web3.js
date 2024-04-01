@@ -18,6 +18,7 @@ import {
     SOLANA_ERROR__CODECS__ENUM_DISCRIMINATOR_OUT_OF_RANGE,
     SOLANA_ERROR__CODECS__EXPECTED_POSITIVE_BYTE_LENGTH,
     SOLANA_ERROR__CODECS__INVALID_BYTE_LENGTH,
+    SOLANA_ERROR__CODECS__INVALID_CONSTANT,
     SOLANA_ERROR__CODECS__INVALID_DISCRIMINATED_UNION_VARIANT,
     SOLANA_ERROR__CODECS__INVALID_ENUM_VARIANT,
     SOLANA_ERROR__CODECS__INVALID_LITERAL_UNION_VARIANT,
@@ -282,6 +283,13 @@ export type SolanaErrorContext = DefaultUnspecifiedErrorContextToUndefined<
             bytesLength: number;
             codecDescription: string;
             expected: number;
+        };
+        [SOLANA_ERROR__CODECS__INVALID_CONSTANT]: {
+            constant: Uint8Array;
+            data: Uint8Array;
+            hexConstant: string;
+            hexData: string;
+            offset: number;
         };
         [SOLANA_ERROR__CODECS__INVALID_DISCRIMINATED_UNION_VARIANT]: {
             value: bigint | boolean | number | string | null | undefined;

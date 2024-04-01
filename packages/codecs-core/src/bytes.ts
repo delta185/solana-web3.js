@@ -40,3 +40,13 @@ export const padBytes = (bytes: Uint8Array, length: number): Uint8Array => {
  */
 export const fixBytes = (bytes: Uint8Array, length: number): Uint8Array =>
     padBytes(bytes.length <= length ? bytes : bytes.slice(0, length), length);
+
+/**
+ * Returns true if and only if the provided `data` byte array contains
+ * the provided `bytes` byte array at the specified `offset`.
+ */
+export function containsBytes(data: Uint8Array, bytes: Uint8Array, offset: number): boolean {
+    const slice = offset === 0 && data.length === bytes.length ? data : data.slice(offset, offset + bytes.length);
+    if (slice.length !== bytes.length) return false;
+    return bytes.every((b, i) => b === slice[i]);
+}
