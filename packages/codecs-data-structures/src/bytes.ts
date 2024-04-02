@@ -5,13 +5,13 @@ import {
     createEncoder,
     Decoder,
     Encoder,
-    fixDecoder,
+    fixDecoderSize,
     FixedSizeCodec,
     FixedSizeDecoder,
     FixedSizeEncoder,
-    fixEncoder,
-    prefixDecoder,
-    prefixEncoder,
+    fixEncoderSize,
+    prefixDecoderSize,
+    prefixEncoderSize,
     VariableSizeCodec,
     VariableSizeDecoder,
     VariableSizeEncoder,
@@ -54,10 +54,10 @@ export function getBytesEncoder(config: BytesCodecConfig<NumberEncoder> = {}): E
     }
 
     if (typeof size === 'number') {
-        return fixEncoder(byteEncoder, size);
+        return fixEncoderSize(byteEncoder, size);
     }
 
-    return prefixEncoder(byteEncoder, size);
+    return prefixEncoderSize(byteEncoder, size);
 }
 
 /**
@@ -84,10 +84,10 @@ export function getBytesDecoder(config: BytesCodecConfig<NumberDecoder> = {}): D
     }
 
     if (typeof size === 'number') {
-        return fixDecoder(byteDecoder, size);
+        return fixDecoderSize(byteDecoder, size);
     }
 
-    return prefixDecoder(byteDecoder, size);
+    return prefixDecoderSize(byteDecoder, size);
 }
 
 /**
